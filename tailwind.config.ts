@@ -7,12 +7,20 @@ const config: Config = {
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
+    container: {
+      center: true,
+      padding: "1.5rem",
+      screens: {
+        "2xl": "1280px",
+      },
+    },
     extend: {
       fontFamily: {
         kumbh: ['Kumbh Sans', 'sans-serif'],
       },
       colors: {
         Orange: 'hsl(26, 100%, 55%)',
+        BgOrange: 'rgba(255, 172, 106, 255)',
         PaleOrange: 'hsl(25, 100%, 94%)',
         DarkBlue: 'hsl(220, 13%, 13%)',
         Grayishblue: 'hsl(219, 9%, 45%)',

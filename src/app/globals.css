@@ -2,21 +2,3 @@
 @tailwind components;
 @tailwind utilities;
 
-
-@font-face {
-  font-family: 'Kumbh Sans';
-  font-style: normal;
-  font-weight: 400;
-  src: url('/fonts/KumbhSans-Regular.ttf') format('truetype');
-}
-
-@font-face {
-  font-family: 'Kumbh Sans';
-  font-style: normal;
-  font-weight: 700;
-  src: url('/fonts/KumbhSans-Bold.ttf') format('truetype');
-}
-
-body {
-  font-family: 'Kumbh Sans', sans-serif;
-}
