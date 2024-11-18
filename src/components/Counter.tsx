@@ -1,20 +1,29 @@
-"use client";
-import React, { useState } from "react";
+import React from "react";
 import { IconMinus, IconPlus } from "@/assets";
 import Image from "next/image";
-// import { Button } from "./ui/Button";
 
-const Counter: React.FC = () => {
-  const [count, setCount] = useState(0);
+interface CounterProps {
+  count: number;
+  onCountChange: (count: number) => void;
+}
+const Counter: React.FC<CounterProps> = ({ onCountChange, count }) => {
 
-  const increment = () => setCount(count + 1);
-  const decrement = () => setCount(prevCount => Math.max(prevCount - 1, 0));
+  const increment = () => {
+    const newCount = count + 1;
+    onCountChange(newCount);
+  };
+  const decrement = () => {
+    if (count > 0) {
+      const newCount = count - 1;
+      onCountChange(newCount);
+    }
+  };
 
   return (
     <>
       <div className="rounded-lg bg-LightGrayishBlue border-none hover:bg-LightGrayishBlue h-12 w-32 shadow">
         <div className="flex flex-row gap-7 justify-around pt-3">
-          <button onClick={decrement}>
+          <button onClick={decrement} disabled={count ===  0}>
             <Image src={IconMinus} alt="" />
           </button>
           <div>{count}</div>

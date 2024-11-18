@@ -1,26 +1,42 @@
-"use client"
+"use client";
 import { useState } from "react";
-import Images from "@/components/Images";
 import Details from "@/components/Details";
 import NavBar from "@/components/NavBar";
+import { StaticImageData } from "next/image";
+import { Product1 } from "@/assets"
 export default function Home() {
-  const [cartMessage, setCartMessage] = useState("Your cart is empty");
+  const [cartItem, setCartItem] = useState<{
+    image: StaticImageData;
+    title: string;
+    count: number;
+  } | null>(null);
+  const [selectedImage, setSelectedImage] = useState<StaticImageData>(
+    Product1
+  );
+  const [count, setCount] = useState(0);
 
   const handleAddToCart = () => {
-    setCartMessage("Add cart button is clicked");
+    setCartItem({
+      image: selectedImage,
+      title: "Fall Limited Edition Sneakers",
+      count
+    });
   };
 
   return (
     <main className="container max-w-[75rem] mx-auto w-full">
       <nav className="">
-        <NavBar cartMessage={cartMessage}/>
+        <NavBar cartItem={cartItem} />
       </nav>
-      <section className="flex w-full justify-between items-center py-20 gap-40 ml-8">
+      <section className="">
         <div className="">
-          <Images />
-        </div>
-        <div className="">
-          <Details handleAddToCart={handleAddToCart} cartMessage={cartMessage}/>
+          <Details
+            handleAddToCart={handleAddToCart}
+            selectedImage={selectedImage}
+            setSelectedImage={setSelectedImage}
+            count={count}
+            setCount={setCount}
+          />
         </div>
       </section>
     </main>

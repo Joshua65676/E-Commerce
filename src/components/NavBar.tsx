@@ -1,19 +1,19 @@
-'use client'
+"use client";
 
 import React, { useState } from "react";
 import { Logo } from "@/assets";
-import Image from "next/image";
+import Image, { StaticImageData } from "next/image";
 import Link from "next/link";
 import { navLinks } from "@/constants";
 import { ImageAvatar } from "@/assets";
 import { IconCart } from "@/assets";
 import Cart from "./Cart";
-import { usePathname, useRouter } from 'next/navigation'
+import { usePathname, useRouter } from "next/navigation";
 
 interface NavBarProps {
-  cartMessage: string;
+  cartItem: { image: StaticImageData; title: string; count: number } | null;
 }
-const NavBar: React.FC<NavBarProps> = ({ cartMessage }) => {
+const NavBar: React.FC<NavBarProps> = ({ cartItem }) => {
   const [showChart, setShowChart] = useState(false);
   const pathname = usePathname();
   const router = useRouter();
@@ -37,7 +37,11 @@ const NavBar: React.FC<NavBarProps> = ({ cartMessage }) => {
               {navLinks.map(({ id, title, link }) => (
                 <ul key={id}>
                   <Link href={link} onClick={() => handleClick(link)}>
-                    <span className={`${pathname ===  title ? 'border-b-2 border-Orange' : ''}text-base text-Grayishblue font-kumbh font-medium hover:text-Black`}>
+                    <span
+                      className={`${
+                        pathname === title ? "border-b-2 border-Orange" : ""
+                      }text-base text-Grayishblue font-kumbh font-medium hover:text-Black`}
+                    >
                       {title}
                     </span>
                   </Link>
@@ -48,7 +52,11 @@ const NavBar: React.FC<NavBarProps> = ({ cartMessage }) => {
 
           <div className="flex flex-row gap-10">
             <button onClick={() => setShowChart(!showChart)}>
-              <Image src={IconCart} alt="CartIcon" className="hover:text-Black"/>
+              <Image
+                src={IconCart}
+                alt="CartIcon"
+                className="hover:text-Black"
+              />
             </button>
             <div>
               <Image
@@ -63,7 +71,13 @@ const NavBar: React.FC<NavBarProps> = ({ cartMessage }) => {
           <hr className="border" />
         </div>
         <div>
-          {showChart && <Cart message={cartMessage}/>}
+          {showChart && (
+            <Cart
+              image={cartItem?.image || null}
+              title={cartItem?.title || "Your cart is empty."}
+              count={cartItem?.count || 0}
+            />
+          )}
         </div>
       </section>
     </nav>

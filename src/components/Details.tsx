@@ -1,21 +1,25 @@
-import React from "react";
+"use client"
+import React, { Dispatch, SetStateAction } from "react";
 import Counter from "./Counter";
 import AddCart from "./AddCart";
-import Cart from "./Cart";
+import Images from "@/components/Images";
+import { StaticImageData } from "next/image";
 
 interface DetailsProps {
   handleAddToCart: () => void;
-  cartMessage: string;
+  selectedImage: StaticImageData;
+  setSelectedImage: (image: StaticImageData) => void;
+  count: number;
+  setCount: Dispatch<SetStateAction<number>>;
 }
-const Details: React.FC<DetailsProps> = ({ handleAddToCart, cartMessage}) => {
-  // const [cartMessage, setCartMessage] = useState("Your cart is empty");
-
-  // const handleAddToCart = () => {
-  //   setCartMessage("Add cart button is clicked");
-  // };
+const Details: React.FC<DetailsProps> = ({ handleAddToCart, setSelectedImage, count, setCount }) => {
 
   return (
-    <main className="pb-">
+    <main className="flex w-full justify-between items-center py-20 gap-40 ml-8">
+      <div className="">
+        <Images onSelectImage={setSelectedImage}/>
+      </div>
+
       <section className="flex flex-col gap-8">
         <div className="flex flex-col gap-4">
           <span className="">
@@ -57,14 +61,11 @@ const Details: React.FC<DetailsProps> = ({ handleAddToCart, cartMessage}) => {
         </div>
         <div className="flex flex-row gap-8">
           <div>
-            <Counter />
+            <Counter count={count} onCountChange={setCount}/>
           </div>
           <div>
             <AddCart onAddToCart={handleAddToCart} />
           </div>
-        </div>
-        <div className="hidden">
-          <Cart message={cartMessage} />
         </div>
       </section>
     </main>

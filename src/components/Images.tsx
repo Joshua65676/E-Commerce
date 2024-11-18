@@ -1,14 +1,14 @@
 "use client";
 import React, { useState } from "react";
 import { ThumbnailImgs } from "@/constants";
-import Image from "next/image";
+import Image, { StaticImageData } from "next/image";
 
-// interface ImagesProps {
-//   onSelectImage: (image: StaticImageData) => void;
-// }
+interface ImagesProps {
+  onSelectImage: (image: StaticImageData) => void;
+}
 
-const Images: React.FC = () => {
-  const [selectedImage, setSelectedImage] = useState(
+const Images: React.FC<ImagesProps> = ({ onSelectImage }) => {
+  const [selectedImage, setSelectedImage] = useState<StaticImageData>(
     ThumbnailImgs[0].productImg
   );
 
@@ -25,7 +25,7 @@ const Images: React.FC = () => {
         {/* Thumbnails */}
         <div className="flex flex-row gap-5">
           {ThumbnailImgs.map(({ id, thumbnailImg, productImg }) => (
-            <button key={id} onClick={() => { setSelectedImage(productImg) }}>
+            <button key={id} onClick={() => { setSelectedImage(productImg); onSelectImage(productImg) }}>
               <div className="relative">
                 <Image
                   src={thumbnailImg}
