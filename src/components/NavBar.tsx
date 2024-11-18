@@ -10,7 +10,10 @@ import { IconCart } from "@/assets";
 import Cart from "./Cart";
 import { usePathname, useRouter } from 'next/navigation'
 
-const NavBar: React.FC = () => {
+interface NavBarProps {
+  cartMessage: string;
+}
+const NavBar: React.FC<NavBarProps> = ({ cartMessage }) => {
   const [showChart, setShowChart] = useState(false);
   const pathname = usePathname();
   const router = useRouter();
@@ -60,7 +63,7 @@ const NavBar: React.FC = () => {
           <hr className="border" />
         </div>
         <div>
-          {showChart && <Cart />}
+          {showChart && <Cart message={cartMessage}/>}
         </div>
       </section>
     </nav>

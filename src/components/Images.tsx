@@ -3,10 +3,15 @@ import React, { useState } from "react";
 import { ThumbnailImgs } from "@/constants";
 import Image from "next/image";
 
+// interface ImagesProps {
+//   onSelectImage: (image: StaticImageData) => void;
+// }
+
 const Images: React.FC = () => {
   const [selectedImage, setSelectedImage] = useState(
     ThumbnailImgs[0].productImg
   );
+
   return (
     <main className="">
       <div className="flex flex-col gap-5">
@@ -20,7 +25,7 @@ const Images: React.FC = () => {
         {/* Thumbnails */}
         <div className="flex flex-row gap-5">
           {ThumbnailImgs.map(({ id, thumbnailImg, productImg }) => (
-            <button key={id} onClick={() => setSelectedImage(productImg)}>
+            <button key={id} onClick={() => { setSelectedImage(productImg) }}>
               <div className="relative">
                 <Image
                   src={thumbnailImg}

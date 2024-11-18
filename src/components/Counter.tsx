@@ -2,18 +2,18 @@
 import React, { useState } from "react";
 import { IconMinus, IconPlus } from "@/assets";
 import Image from "next/image";
-import { Button } from "./ui/Button";
+// import { Button } from "./ui/Button";
 
 const Counter: React.FC = () => {
   const [count, setCount] = useState(0);
 
   const increment = () => setCount(count + 1);
-  const decrement = () => setCount(count - 1);
+  const decrement = () => setCount(prevCount => Math.max(prevCount - 1, 0));
 
   return (
     <>
-      <Button className="rounded-lg bg-LightGrayishBlue border-none hover:bg-LightGrayishBlue">
-        <div className="flex flex-row gap-7 justify-between">
+      <div className="rounded-lg bg-LightGrayishBlue border-none hover:bg-LightGrayishBlue h-12 w-32 shadow">
+        <div className="flex flex-row gap-7 justify-around pt-3">
           <button onClick={decrement}>
             <Image src={IconMinus} alt="" />
           </button>
@@ -22,7 +22,7 @@ const Counter: React.FC = () => {
             <Image src={IconPlus} alt="" />
           </button>
         </div>
-      </Button>
+      </div>
     </>
   );
 };

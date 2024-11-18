@@ -1,8 +1,19 @@
 import React from "react";
 import Counter from "./Counter";
 import AddCart from "./AddCart";
+import Cart from "./Cart";
 
-const Details = () => {
+interface DetailsProps {
+  handleAddToCart: () => void;
+  cartMessage: string;
+}
+const Details: React.FC<DetailsProps> = ({ handleAddToCart, cartMessage}) => {
+  // const [cartMessage, setCartMessage] = useState("Your cart is empty");
+
+  // const handleAddToCart = () => {
+  //   setCartMessage("Add cart button is clicked");
+  // };
+
   return (
     <main className="pb-">
       <section className="flex flex-col gap-8">
@@ -32,11 +43,15 @@ const Details = () => {
             <div className="flex flex-row gap-4">
               <span className="font-bold text-2xl font-kumbh">$125.00</span>
               <div className="bg-Black w-12 text-center h-6 mt-1 rounded-lg">
-                <span className="text-White text-[13px] font-kumbh font-bold">50%</span>
+                <span className="text-White text-[13px] font-kumbh font-bold">
+                  50%
+                </span>
               </div>
             </div>
             <div className="">
-              <span className="text-lg font-kumbh font-medium text-Grayishblue line-through">$250.00</span>
+              <span className="text-lg font-kumbh font-medium text-Grayishblue line-through">
+                $250.00
+              </span>
             </div>
           </div>
         </div>
@@ -45,8 +60,11 @@ const Details = () => {
             <Counter />
           </div>
           <div>
-            <AddCart />
+            <AddCart onAddToCart={handleAddToCart} />
           </div>
+        </div>
+        <div className="hidden">
+          <Cart message={cartMessage} />
         </div>
       </section>
     </main>
