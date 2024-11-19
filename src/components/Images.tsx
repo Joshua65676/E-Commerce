@@ -15,13 +15,13 @@ const Images: React.FC<ImagesProps> = ({ onSelectImage }) => {
   return (
     <main className="">
       <div className="flex flex-col gap-5">
-        <div className="-mt-5">
+        <button className="-mt-5">
           <Image
             src={selectedImage}
             alt="Selected"
             className="rounded-xl"
           />
-        </div>
+        </button>
         {/* Thumbnails */}
         <div className="flex flex-row gap-5">
           {ThumbnailImgs.map(({ id, thumbnailImg, productImg }) => (
