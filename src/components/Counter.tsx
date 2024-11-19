@@ -26,8 +26,8 @@ const Counter: React.FC<CounterProps> = ({ onCountChange, count }) => {
           <button onClick={decrement} disabled={count ===  0}>
             <Image src={IconMinus} alt="" />
           </button>
-          <div>{count}</div>
-          <button onClick={increment}>
+          <div className="font-kumbh font-semibold">{count}</div>
+          <button onClick={increment} >
             <Image src={IconPlus} alt="" />
           </button>
         </div>

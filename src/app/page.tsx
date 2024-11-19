@@ -23,10 +23,15 @@ export default function Home() {
     });
   };
 
+  const handleDeleteCart = () => {
+    setCount(0);
+    setCartItem(null);
+  };
+
   return (
     <main className="container max-w-[75rem] mx-auto w-full">
       <nav className="">
-        <NavBar cartItem={cartItem} />
+        <NavBar cartItem={cartItem} count={count} onDeleteCart={handleDeleteCart} />
       </nav>
       <section className="">
         <div className="">

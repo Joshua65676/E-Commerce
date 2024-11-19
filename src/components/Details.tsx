@@ -13,7 +13,7 @@ interface DetailsProps {
   setCount: Dispatch<SetStateAction<number>>;
 }
 const Details: React.FC<DetailsProps> = ({ handleAddToCart, setSelectedImage, count, setCount }) => {
-
+  
   return (
     <main className="flex w-full justify-between items-center py-20 gap-40 ml-8">
       <div className="">
