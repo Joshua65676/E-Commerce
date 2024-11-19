@@ -15,12 +15,12 @@ interface DetailsProps {
 const Details: React.FC<DetailsProps> = ({ handleAddToCart, setSelectedImage, count, setCount }) => {
   
   return (
-    <main className="flex w-full justify-between items-center py-20 gap-40 ml-8">
+    <main className="flex w-full justify-between items-center py-14 p-5 gap-40 ml-8">
       <div className="">
         <Images onSelectImage={setSelectedImage}/>
       </div>
 
-      <section className="flex flex-col gap-8">
+      <section className="flex flex-col gap-8 pb-8">
         <div className="flex flex-col gap-4">
           <span className="">
             <h5 className="font-kumbh text-Grayishblue font-semibold uppercase tracking-widest text-[14px]">

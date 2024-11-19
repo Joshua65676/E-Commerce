@@ -27,7 +27,7 @@ const NavBar: React.FC<NavBarProps> = ({ cartItem, onDeleteCart, count }) => {
   return (
     <nav>
       <section className="container max-w-7xl mx-auto w-full">
-        <main className="flex w-full justify-between items-center py-8">
+        <main className="flex w-full justify-between items-center py-7">
           <div className="flex flex-row gap-16">
             <div className="">
               <Link href="/">
