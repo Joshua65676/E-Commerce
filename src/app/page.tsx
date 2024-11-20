@@ -1,6 +1,6 @@
 "use client";
 import { useState } from "react";
-import Details from "@/components/Details";
+import HomePage from "@/components/Home";
 import NavBar from "@/components/NavBar";
 import { StaticImageData } from "next/image";
 import { Product1 } from "@/assets"
@@ -35,7 +35,7 @@ export default function Home() {
       </nav>
       <section className="">
         <div className="">
-          <Details
+          <HomePage
             handleAddToCart={handleAddToCart}
             selectedImage={selectedImage}
             setSelectedImage={setSelectedImage}
