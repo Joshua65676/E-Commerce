@@ -1,8 +1,9 @@
-"use client"
-import React, { Dispatch, SetStateAction } from "react";
+"use client";
+import React, { Dispatch, SetStateAction, useState } from "react";
 import Counter from "./Counter";
 import AddCart from "./AddCart";
-import Images from "@/components/Images";
+import Images from "./Images";
+import FullImage from "./FullImage";
 import { StaticImageData } from "next/image";
 
 interface DetailsProps {
@@ -12,12 +13,28 @@ interface DetailsProps {
   count: number;
   setCount: Dispatch<SetStateAction<number>>;
 }
-const Details: React.FC<DetailsProps> = ({ handleAddToCart, setSelectedImage, count, setCount }) => {
-  
+const Details: React.FC<DetailsProps> = ({
+  handleAddToCart,
+  setSelectedImage,
+  count,
+  setCount,
+}) => {
+  const [isFullImageVisible, setIsFullImageVisible] = useState(false);
+
+  const handleImageClick = () => {
+    setIsFullImageVisible(true);
+  };
+  const handleCloseFullImage = () => {
+    setIsFullImageVisible(false);
+  };
+
   return (
     <main className="flex w-full justify-between items-center py-14 p-5 gap-40 ml-8">
       <div className="">
-        <Images onSelectImage={setSelectedImage}/>
+        <Images
+          onSelectImage={setSelectedImage}
+          onImageClick={handleImageClick}
+        />
       </div>
 
       <section className="flex flex-col gap-8 pb-8">
@@ -59,15 +76,21 @@ const Details: React.FC<DetailsProps> = ({ handleAddToCart, setSelectedImage, co
             </div>
           </div>
         </div>
+
         <div className="flex flex-row gap-8">
           <div>
-            <Counter count={count} onCountChange={setCount}/>
+            <Counter count={count} onCountChange={setCount} />
           </div>
           <div>
             <AddCart onAddToCart={handleAddToCart} />
           </div>
         </div>
       </section>
+      {isFullImageVisible && (
+        <FullImage
+          onClose={handleCloseFullImage}
+        />
+      )}
     </main>
   );
 };

@@ -4,11 +4,10 @@ import { ThumbnailImgs } from "@/constants";
 import Image, { StaticImageData } from "next/image";
 import { IconClose, IconNext, IconPrevious } from "@/assets";
 
-// interface ImagesProps {
-//   onSelectImage: (image: StaticImageData) => void;
-// }
-
-const FullImage: React.FC = () => {
+interface FullImageProps {
+  onClose: () => void;
+}
+const FullImage: React.FC<FullImageProps> = ({onClose}) => {
   const [selectedImage, setSelectedImage] = useState<StaticImageData>(
     ThumbnailImgs[0].productImg
   );
@@ -16,16 +15,20 @@ const FullImage: React.FC = () => {
   return (
     <main className=" bg-Black bg-opacity-50 absolute top-0 left-0 h-[100vh] w-[100vw] z-10 items-center justify-center flex flex-col">
       <div className="flex flex-col justify-center">
-          <button className="absolute right-[33rem] top-5 pt-2">
-            <Image src={IconClose} alt="" className="" />
-          </button>
+        <button onClick={onClose} className="absolute right-[33rem] top-5 pt-2">
+          <Image src={IconClose} alt="" className="" />
+        </button>
 
         <div className="">
           <button className="relative bg-White w-[50px] h-[50px] rounded-full flex items-center justify-center top-60 bottom-0 -ml-3">
             <Image src={IconPrevious} alt="" />
           </button>
           <div className="-mt-5">
-            <Image src={selectedImage} alt="Selected" className="rounded-xl w-[30rem]" />
+            <Image
+              src={selectedImage}
+              alt="Selected"
+              className="rounded-xl w-[30rem]"
+            />
           </div>
           <button className="relative bg-White w-[50px] h-[50px] rounded-full flex items-center justify-center bottom-[16.9rem] ml-[28rem]">
             <Image src={IconNext} alt="" />

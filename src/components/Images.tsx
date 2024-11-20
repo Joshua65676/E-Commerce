@@ -2,14 +2,13 @@
 import React, { useState } from "react";
 import { ThumbnailImgs } from "@/constants";
 import Image, { StaticImageData } from "next/image";
-import FullImage from "./FullImage";
 
 interface ImagesProps {
   onSelectImage: (image: StaticImageData) => void;
+  onImageClick: () => void;
 }
 
-const Images: React.FC<ImagesProps> = ({ onSelectImage }) => {
-  const [showFullImg, setShowFullImg] = useState(false);
+const Images: React.FC<ImagesProps> = ({ onSelectImage, onImageClick }) => {
   const [selectedImage, setSelectedImage] = useState<StaticImageData>(
     ThumbnailImgs[0].productImg
   );
@@ -22,7 +21,7 @@ const Images: React.FC<ImagesProps> = ({ onSelectImage }) => {
             src={selectedImage}
             alt="Selected"
             className="rounded-xl"
-            onClick={() => setShowFullImg(!showFullImg)}
+            onClick={onImageClick}
           />
         </button>
         {/* Thumbnails */}
@@ -51,8 +50,6 @@ const Images: React.FC<ImagesProps> = ({ onSelectImage }) => {
           ))}
         </div>
       </div>
-      {/* Full Image */}
-      <div className="">{showFullImg && <FullImage />}</div>
     </main>
   );
 };
