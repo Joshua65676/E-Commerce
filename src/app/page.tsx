@@ -29,7 +29,7 @@ export default function Home() {
   };
 
   return (
-    <main className="container max-w-[75rem] mx-auto w-full">
+    <main className="container max-w-[75rem] mx-auto w-full overflow-hidden">
       <nav className="">
         <NavBar cartItem={cartItem} count={count} onDeleteCart={handleDeleteCart} />
       </nav>
