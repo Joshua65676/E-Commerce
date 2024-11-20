@@ -42,7 +42,7 @@ const NavBar: React.FC<NavBarProps> = ({ cartItem, onDeleteCart, count }) => {
                     <span
                       className={`${
                         pathname === title ? "border-b-2 border-Orange" : ""
-                      }text-base text-Grayishblue font-kumbh font-medium hover:text-Black`}
+                      }text-base text-Grayishblue font-kumbh font-medium hover:text-Black hover:border-b-4 hover:border-Orange hover:`}
                     >
                       {title}
                     </span>
