@@ -14,7 +14,7 @@ const Cart: React.FC<CartProps> = ({ image, title, count, onDelete }) => {
   const price = 125.0;
   const totalCost = (price * count).toFixed(2);
   return (
-    <main className="w-[20rem] absolute right-20 top-24 bg-White shadow-xl h-60 rounded-b-lg">
+    <main className="md:w-[20rem] mx:w-[22rem] absolute md:right-20 top-24 bg-White shadow-xl md:h-60 mx:h-80 md:rounded-b-lg mx:rounded-lg mx:z-10">
       <section>
         <div className="p-3 pl-4 pb-3">
           <span className="text-[16px] font-kumbh font-semibold">Cart</span>

@@ -10,7 +10,7 @@ interface AddCartProps {
 const AddCart: React.FC<AddCartProps> = ({ onAddToCart }) => {
   return (
     <>
-      <Button onClick={onAddToCart} className="bg-Orange border-Orange w-56 rounded-xl hover:bg-BgOrange">
+      <Button onClick={onAddToCart} className="bg-Orange border-Orange md:w-56 mx:w-full rounded-xl hover:bg-BgOrange">
         <div className="flex flex-row gap-5">
           <Image src={IconCart} alt="" className="w-5 h-5 filter invert-0"/>
           <span className="text-Black font-bold  font-kumbh text-base">Add to cart</span>

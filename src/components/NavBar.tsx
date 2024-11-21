@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { Logo } from "@/assets";
+import { Logo, IconMenu } from "@/assets";
 import Image, { StaticImageData } from "next/image";
 import Link from "next/link";
 import { navLinks } from "@/constants";
@@ -13,9 +13,10 @@ import { usePathname, useRouter } from "next/navigation";
 interface NavBarProps {
   cartItem: { image: StaticImageData; title: string; count: number } | null;
   onDeleteCart: () => void;
+  onMenuClick: () => void;
   count: number;
 }
-const NavBar: React.FC<NavBarProps> = ({ cartItem, onDeleteCart, count }) => {
+const NavBar: React.FC<NavBarProps> = ({ cartItem, onDeleteCart, onMenuClick, count }) => {
   const [showChart, setShowChart] = useState(false);
   const pathname = usePathname();
   const router = useRouter();
@@ -26,16 +27,22 @@ const NavBar: React.FC<NavBarProps> = ({ cartItem, onDeleteCart, count }) => {
 
   return (
     <nav>
-      <section className="container max-w-7xl mx-auto w-full">
+      <section className="md:container max-w-7xl mx-auto w-full">
         <main className="flex w-full justify-between items-center py-7">
-          <div className="flex flex-row gap-16">
+          <div className="flex flex-row md:gap-16 mx:gap-5">
+            <div className="md:hidden">
+              <button onClick={onMenuClick} className="">
+                <Image src={IconMenu} alt="" />
+              </button>
+            </div>
+
             <div className="">
               <Link href="/">
                 <Image src={Logo} alt="" />
               </Link>
             </div>
 
-            <div className="flex flex-row gap-7">
+            <div className="flex flex-row gap-7 sm:hidden mx:hidden xm:hidden xl:flex md:flex lg:flex">
               {navLinks.map(({ id, title, link }) => (
                 <ul key={id}>
                   <Link href={link} onClick={() => handleClick(link)}>
@@ -52,7 +59,7 @@ const NavBar: React.FC<NavBarProps> = ({ cartItem, onDeleteCart, count }) => {
             </div>
           </div>
 
-          <div className="flex flex-row gap-10">
+          <div className="flex flex-row md:gap-10 mx:gap-5">
             <button onClick={() => setShowChart(!showChart)}>
               {count > 0 && (
                 <span className="absolute top-9 ml-2  bg-Orange text-white rounded-full text-xs w-6 h-4 flex items-center justify-center font-kumbh font-semibold">
@@ -69,13 +76,13 @@ const NavBar: React.FC<NavBarProps> = ({ cartItem, onDeleteCart, count }) => {
               <Image
                 src={ImageAvatar}
                 alt="Person"
-                className="w-[50px] h-[50px] hover:rounded-full hover:border-Orange hover:border-2"
+                className="md:w-[50px] md:h-[50px] mx:w-[30px] mx:h[30px] hover:rounded-full hover:border-Orange hover:border-2"
               />
             </div>
           </div>
         </main>
-        <div>
-          <hr className="border" />
+        <div className="">
+          <hr className="border md:flex mx:hidden" />
         </div>
         <div>
           {showChart && (

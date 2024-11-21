@@ -2,7 +2,7 @@ import React from "react";
 
 const Details = () => {
   return (
-    <main className="">
+    <main className="flex flex-col mx:gap-5">
       <div className="flex flex-col gap-4">
         <span className="">
           <h5 className="font-kumbh text-Grayishblue font-semibold uppercase tracking-widest text-[14px]">
@@ -10,7 +10,7 @@ const Details = () => {
           </h5>
         </span>
         <header className="">
-          <h1 className="font-kumbh text-Black font-bold text-5xl leading-[50px]">
+          <h1 className="font-kumbh text-Black font-bold md:text-5xl mx:text-3xl leading-[50px]">
             Fall Limited Edition Sneakers
           </h1>
         </header>
@@ -18,14 +18,14 @@ const Details = () => {
 
       <div className="flex flex-col gap-5">
         <div className="">
-          <p className="font-mono font-medium text-[16px] text-GrayishBlue leading-[26.2px] -tracking-[2.5%]">
+          <p className="font-mono md:font-medium mx:font-bold md:text-[16px] mx:text-[12.5px] text-GrayishBlue leading-[26.2px] -tracking-[2.5%]">
             These low-profile sneakers are your perfect casual wear companion.
             Featuring a durable rubber outer sole, they’ll withstand everything
             the weather can offer.
           </p>
         </div>
 
-        <div className="flex flex-col gap-3">
+        <div className="flex md:flex-col md:gap-3 mx:flex-row mx:justify-between ">
           <div className="flex flex-row gap-4">
             <span className="font-bold text-2xl font-kumbh">$125.00</span>
             <div className="bg-Black w-12 text-center h-6 mt-1 rounded-lg">

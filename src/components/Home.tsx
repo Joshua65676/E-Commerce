@@ -30,18 +30,18 @@ const HomePage: React.FC<DetailsProps> = ({
   };
 
   return (
-    <main className="flex w-full justify-between items-center py-14 p-5 gap-40 ml-8">
-      <div className="">
+    <main className="md:container max-w-7xl mx-auto w-full md:justify-between items-center md:py-14 p-5 md:gap-40 md:ml-8 md:flex md:flex-row mx:flex mx:flex-col mx:gap-8 mx:ml-0">
+      <div className="mx:w-screen md:w-10/12">
         <Images
           onSelectImage={setSelectedImage}
           onImageClick={handleImageClick}
         />
       </div>
 
-      <section className="flex flex-col gap-8 pb-8">
+      <section className="flex flex-col gap-8 md:pb-8 mx:pb-5 mx:w-[90vw]">
         <Details />
 
-        <div className="flex flex-row gap-8">
+        <div className="flex md:flex-row md:gap-8 mx:flex-col mx:gap-8">
           <div>
             <Counter count={count} onCountChange={setCount} />
           </div>

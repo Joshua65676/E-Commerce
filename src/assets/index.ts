@@ -1,5 +1,6 @@
 import Favicon from "./images/favicon-32x32.png"
 import IconCart from "./images/icon-cart.svg"
+import CloseIcon from "./images/close-icon.svg"
 import IconClose from "./images/icon-close.svg"
 import IconDelete from "./images/icon-delete.svg"
 import IconMenu from "./images/icon-menu.svg"
@@ -21,6 +22,7 @@ import Product4 from "./images/image-product-4.jpg"
 export {
     Favicon,
     IconCart,
+    CloseIcon,
     IconClose,
     IconDelete,
     IconMenu,

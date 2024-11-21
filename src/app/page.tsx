@@ -2,6 +2,7 @@
 import { useState } from "react";
 import HomePage from "@/components/Home";
 import NavBar from "@/components/NavBar";
+import MenuBar from "@/components/SideBar";
 import { StaticImageData } from "next/image";
 import { Product1 } from "@/assets"
 export default function Home() {
@@ -14,6 +15,7 @@ export default function Home() {
     Product1
   );
   const [count, setCount] = useState(0);
+  const [isMenuVisible, setIsMenuVisible] = useState(false);
 
   const handleAddToCart = () => {
     setCartItem({
@@ -28,10 +30,18 @@ export default function Home() {
     setCartItem(null);
   };
 
+  const handleMenuClick = () => {
+    setIsMenuVisible(true);
+  };
+  const handleMenuClose = () => {
+    setIsMenuVisible(false);
+  };
+
   return (
     <main className="container max-w-[75rem] mx-auto w-full overflow-hidden">
       <nav className="">
-        <NavBar cartItem={cartItem} count={count} onDeleteCart={handleDeleteCart} />
+        {isMenuVisible && <MenuBar onClose={handleMenuClose}/>}
+        <NavBar cartItem={cartItem} count={count} onDeleteCart={handleDeleteCart} onMenuClick={handleMenuClick} />
       </nav>
       <section className="">
         <div className="">

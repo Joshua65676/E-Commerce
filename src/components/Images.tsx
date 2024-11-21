@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import { ThumbnailImgs } from "@/constants";
 import Image, { StaticImageData } from "next/image";
+import { IconNext, IconPrevious } from "@/assets";
 
 interface ImagesProps {
   onSelectImage: (image: StaticImageData) => void;
@@ -16,16 +17,24 @@ const Images: React.FC<ImagesProps> = ({ onSelectImage, onImageClick }) => {
   return (
     <main className="">
       <div className="flex flex-col gap-5">
-        <button className="-mt-5">
-          <Image
-            src={selectedImage}
-            alt="Selected"
-            className="rounded-xl"
-            onClick={onImageClick}
-          />
-        </button>
+        <div>
+          <button className="absolute left-0 bg-White w-[50px] h-[50px] rounded-full flex items-center justify-center bottom-[23.5rem] transform -translate-y-1/2 ml-5 pr-1 md:hidden">
+            <Image src={IconPrevious} alt="Previous icon" />
+          </button>
+          <button className="-mt-5">
+            <Image
+              src={selectedImage}
+              alt="Selected"
+              className="md:rounded-xl mx:w-full"
+              onClick={onImageClick}
+            />
+          </button>
+          <button className="absolute right-0 bg-White w-[50px] h-[50px] rounded-full flex items-center justify-center bottom-[24rem] transform -translate-y-1/2 mr-5 pl-1 md:hidden">
+            <Image src={IconNext} alt="Next icon" />
+          </button>
+        </div>
         {/* Thumbnails */}
-        <div className="flex flex-row gap-5">
+        <div className="flex flex-row gap-5 md:flex mx:hidden">
           {ThumbnailImgs.map(({ id, thumbnailImg, productImg }) => (
             <button
               key={id}

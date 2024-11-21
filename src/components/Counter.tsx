@@ -21,7 +21,7 @@ const Counter: React.FC<CounterProps> = ({ onCountChange, count }) => {
 
   return (
     <>
-      <div className="rounded-lg bg-LightGrayishBlue border-none hover:bg-LightGrayishBlue h-12 w-32 shadow">
+      <div className="rounded-lg bg-LightGrayishBlue border-none hover:bg-LightGrayishBlue h-12 md:w-32 mx:w-full shadow">
         <div className="flex flex-row gap-7 justify-around pt-3">
           <button onClick={decrement} disabled={count ===  0}>
             <Image src={IconMinus} alt="" />
