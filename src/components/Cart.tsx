@@ -16,15 +16,15 @@ const Cart: React.FC<CartProps> = ({ image, title, count, onDelete }) => {
   return (
     <main className="md:w-[20rem] mx:w-[22rem] absolute md:right-20 top-24 bg-White shadow-xl md:h-60 mx:h-80 md:rounded-b-lg mx:rounded-lg mx:z-10">
       <section>
-        <div className="p-3 pl-4 pb-3">
-          <span className="text-[16px] font-kumbh font-semibold">Cart</span>
+        <div className="md:p-3 md:pl-4 md:pb-3 mx:p-5 ">
+          <span className="md:text-[16px] mx:text-[18px] font-kumbh font-semibold">Cart</span>
         </div>
         <div className="">
           <hr className="" />
         </div>
         {image && title ? (
-          <div className="flex flex-col gap-4 py-3">
-            <div className="flex flex-row items-center p-4 gap-3">
+          <div className="flex flex-col md:gap-4 md:py-3 mx:py-5 mx:gap-8">
+            <div className="flex flex-row items-center p-4 md:gap-3 mx:gap-5">
               <Image
                 src={image}
                 alt={title}
