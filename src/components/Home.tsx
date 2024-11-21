@@ -50,7 +50,7 @@ const HomePage: React.FC<DetailsProps> = ({
           </div>
         </div>
       </section>
-      {isFullImageVisible && <FullImage onClose={handleCloseFullImage} />}
+      {isFullImageVisible && <FullImage onClose={handleCloseFullImage}/>}
     </main>
   );
 };

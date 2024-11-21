@@ -10,15 +10,26 @@ interface ImagesProps {
 }
 
 const Images: React.FC<ImagesProps> = ({ onSelectImage, onImageClick }) => {
-  const [selectedImage, setSelectedImage] = useState<StaticImageData>(
-    ThumbnailImgs[0].productImg
-  );
+  const [currentIndex, setCurrentIndex] = useState<number>(0);
+  const selectedImage = ThumbnailImgs[currentIndex].productImg;
+
+  const handleNext = () => {
+    setCurrentIndex((prevIndex) =>
+      prevIndex === ThumbnailImgs.length - 1 ? 0 : prevIndex + 1
+    );
+  };
+
+  const handlePrevious = () => {
+    setCurrentIndex((prevIndex) =>
+      prevIndex === 0 ? ThumbnailImgs.length - 1 : prevIndex - 1
+    );
+  };
 
   return (
     <main className="">
       <div className="flex flex-col gap-5">
         <div>
-          <button className="absolute left-0 bg-White w-[50px] h-[50px] rounded-full flex items-center justify-center bottom-[23.5rem] transform -translate-y-1/2 ml-5 pr-1 md:hidden">
+          <button onClick={handlePrevious} className="absolute left-0 bg-White w-[50px] h-[50px] rounded-full flex items-center justify-center bottom-[23.5rem] transform -translate-y-1/2 ml-5 pr-1 md:hidden">
             <Image src={IconPrevious} alt="Previous icon" />
           </button>
           <button className="-mt-5">
@@ -29,17 +40,17 @@ const Images: React.FC<ImagesProps> = ({ onSelectImage, onImageClick }) => {
               onClick={onImageClick}
             />
           </button>
-          <button className="absolute right-0 bg-White w-[50px] h-[50px] rounded-full flex items-center justify-center bottom-[24rem] transform -translate-y-1/2 mr-5 pl-1 md:hidden">
+          <button onClick={handleNext} className="absolute right-0 bg-White w-[50px] h-[50px] rounded-full flex items-center justify-center bottom-[24rem] transform -translate-y-1/2 mr-5 pl-1 md:hidden">
             <Image src={IconNext} alt="Next icon" />
           </button>
         </div>
         {/* Thumbnails */}
         <div className="flex flex-row gap-5 md:flex mx:hidden">
-          {ThumbnailImgs.map(({ id, thumbnailImg, productImg }) => (
+          {ThumbnailImgs.map(({ id, thumbnailImg, productImg }, index) => (
             <button
               key={id}
               onClick={() => {
-                setSelectedImage(productImg);
+                setCurrentIndex(index);
                 onSelectImage(productImg);
               }}
             >

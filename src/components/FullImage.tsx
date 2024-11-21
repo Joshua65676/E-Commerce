@@ -25,7 +25,7 @@ const FullImage: React.FC<FullImageProps> = ({ onClose }) => {
   };
 
   return (
-    <main className="bg-Black bg-opacity-50 absolute top-0 left-0 h-[100vh] w-[100vw] z-10 items-center justify-center flex flex-col">
+    <main className="bg-Black bg-opacity-50 absolute top-0 left-0 h-[100vh] w-[100vw] z-10 items-center justify-center flex flex-col md:flex mx:hidden">
       <div className="flex flex-col justify-center">
         <button onClick={onClose} className="absolute right-[33rem] top-5 pt-2">
           <Image src={IconClose} alt="Close icon" />
